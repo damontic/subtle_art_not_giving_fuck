@@ -172,11 +172,19 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				multiplex: {
+					// Example values. To generate your own, see the socket.io server instructions.
+					secret: '15242603309722311679', // Obtained from the socket.io server. Gives this (the master) control of the presentation
+					id: '02057f4dde868fc4', // Obtained from socket.io server
+					url: 'http://192.168.19.46:1948' // Location of socket.io server
+				},
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/multiplex/master.js', async: true },
+					{ src: 'plugin/notes-server/client.js', async: true }
 				]
 			});
 		</script>
